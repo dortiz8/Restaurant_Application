@@ -1,0 +1,187 @@
+
+{
+  "menu":  
+  {
+    "sides": [
+      "rice",
+      "beans",
+      "yuca fries",
+      "vegetables",
+      "potatoe skins"
+  ],
+  "mainItems": [
+      {
+          "name": "Pollo Asado",
+          "price": 60,
+          "description": "White chicken grilled to perfection",
+          "image": "polloAsado.jpg",
+          "id": 1
+      },
+      {
+          "name": "Puerco en Salsa Verde",
+          "price": 60,
+          "description": "Pork chops marinated and drowned in our signature green sauce",
+          "image": "puercoSalsaVerde.jpg",
+          "id": 2
+      },
+      {
+          "name": "Milanesa de Pollo",
+          "price": 50,
+          "description": "Spicy breaded chicken filet",
+          "image": "milanesa.jpg",
+          "id": 3
+      },
+      {
+        "name": "Milanesa de Res",
+        "price": 50,
+        "description": "Spicy breaded steak filet",
+        "image": "milanesa.jpg",
+        "id": 4
+    },
+      {
+          "name": "Tacos",
+          "price": 12,
+          "description": "Tacos with homade tortillas - $12 c/u",
+          "image": "tacos.jpg",
+          "id": 5,
+          "complexity": "complex"
+      }
+      
+  ],
+  "desserts": [
+      {
+          "name": "Tres leches cake",
+          "choices": [
+              "chocolate",
+              "vanilla"
+          ],
+          "price": 25,
+          "description": "Choice of flavored bread soaked in special three milk blend"
+      }
+  ]
+  },
+
+  "allItems": [
+    {
+        "name": "Pollo Asado",
+        "price": 60,
+        "description": "White chicken grilled to perfection",
+        "image": "polloAsado.jpg",
+        "id": 1
+    },
+    {
+        "name": "Puerco en Salsa Verde",
+        "price": 60,
+        "description": "Pork chops marinated and drowned in our signature green sauce",
+        "image": "puercoSalsaVerde.jpg",
+        "id": 2
+    },
+    {
+        "name": "Milanesa de Pollo",
+        "price": 50,
+        "description": "Spicy breaded chicken filet",
+        "image": "milanesa.jpg",
+        "id": 3
+    },
+    {
+        "name": "Milanesa de Res",
+        "price": 50,
+        "description": "Spicy breaded beef filet",
+        "image": "milanesa.jpg",
+        "id": 3
+    },
+    {
+        "name": "Tacos",
+        "price": 12,
+        "description": "Tacos with homade tortillas - $12 c/u",
+        "image": "tacos.jpg",
+        "id": 4,
+        "complexity": "complex"
+    },
+    {
+        "name": "Tres leches cake",
+        "choices": [
+            "chocolate",
+            "vanilla"
+        ],
+        "price": 25,
+        "description": "Choice of flavored bread soaked in special three milk blend"
+    },
+    {
+        "name": "rice",
+        "price": 3,
+        "image": null
+    },
+    {
+        "name": "beans",
+        "price": 3,
+        "image": null
+    },
+    {
+        "name": "yuca fries",
+        "price": 3,
+        "image": null
+    },
+    {
+        "name": "vegetables",
+        "price": 3,
+        "image": null
+    }, 
+    {
+        "name": "potatoe skins",
+        "price": 3,
+        "image": null
+    }
+
+    
+],
+
+"complexOptions": {
+    "sides": [
+        "rice",
+        "beans",
+        "yuca fries",
+        "vegetables",
+        "potatoe skins"
+    ],
+    "meatChoices": {
+        "tacos": [
+            "chicken",
+            "beef",
+            "pork",
+            "asada",
+            "chorizo",
+            "carnitas"
+        ],
+        "milanesa": [
+            "chicken",
+            "beef"
+        ]
+    },
+    "quantities": {
+        "tacos": [
+            1,
+            3,
+            5
+        ]
+    },
+    "prices":{
+        "tacos":{
+            "one": 12,
+            "three": 36, 
+            "five": 60
+        }
+    },
+    "wraps": {
+        "tacos": [
+            "corn tortilla",
+            "flour tortilla"
+        ],
+        "sandwiches": [
+            "sesame seed bun",
+            "white bun"
+        ]
+    }
+}
+
+}
