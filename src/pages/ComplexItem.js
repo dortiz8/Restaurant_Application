@@ -61,13 +61,13 @@ function ComplexItem({
     // }, [storedChoices, qty]);
 
     //useEffect() to keep track of the sides boxes selected
-    useEffect(() => {
-        let sideList = document.getElementsByClassName("sides");
-        for (let i = 0; i < sideList.length; i++) {
-            const side = sideList[i];
-            sides.length == 2 && !side.checked ? side.disabled = true : side.disabled = false;
-        }
-    }, [sides])
+    // useEffect(() => {
+    //     let sideList = document.getElementsByClassName("side");
+    //     for (let i = 0; i < sideList.length; i++) {
+    //         const side = sideList[i];
+    //         sides.length == 2 && !side.checked ? side.disabled = true : side.disabled = false;
+    //     }
+    // }, [sides])
 
 
     function fetchQty(i) {
@@ -92,7 +92,7 @@ function ComplexItem({
             <li>
                 {s}
                 <input
-                    className="sides"
+                    className="side"
                     type="checkbox"
                     onClick={(e) => {
                         if (e.target.checked && sides.length != 2) {

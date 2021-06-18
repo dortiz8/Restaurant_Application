@@ -25,7 +25,7 @@ function Item({sides,activeItem, addToCart, addToSides, deleteFromSides}){
     // }
 
     useEffect(()=>{
-        let sideList = document.getElementsByClassName("sides");
+        let sideList = document.getElementsByClassName("side");
         for (let i = 0; i < sideList.length; i++) {
             const side = sideList[i];
             sides.length ==2 && !side.checked ? side.disabled=true : side.disabled=false;
@@ -38,7 +38,7 @@ function Item({sides,activeItem, addToCart, addToSides, deleteFromSides}){
                <li key={options.sides.indexOf(s)}>
                    {s}
                    <input
-                   className="sides"
+                   className="side"
                    type="checkbox"
                     onClick={(e)=>{
                         if (e.target.checked && sides.length != 2) {

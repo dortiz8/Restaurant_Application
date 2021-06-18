@@ -20,9 +20,22 @@ import ComplexItem from "./pages/ComplexItem";
 
 function App() {
   const navigate = useNavigate();
+  // const fetchPrimitive = (name) =>{
+  //   try {
+  //     return JSON.parse(localStorage.getItem(name)) ?? [];
+  //   } catch (error) {
+  //     console.log("Parsed local storage info could not be retrieved")
+  //     return [];
+  //   }
+  // }
   const fetchObject = (name)=>{
     try {
-      return  JSON.parse(localStorage.getItem(name)) ?? [];
+      if (typeof JSON.parse(localStorage.getItem(name)) === 'object'){
+        return JSON.parse(localStorage.getItem(name)) ?? [];
+      }else{
+        return parseInt(JSON.parse(localStorage.getItem(name))) ?? 0;
+      }
+      
     } catch (error) {
       console.log("Parsed local storage info could not be retrieved")
       return [];
@@ -31,11 +44,11 @@ function App() {
   // STATE
   const [activeItem, setActiveItem] = useState(fetchObject("activeItem"));
   const [cart, setCart] = useState(fetchObject("cart"));
-  const [orderTotal, setOrderTotal] = useState(0);
+  const [orderTotal, setOrderTotal] = useState(fetchObject("orderTotal"));
   const { data: options, loading, error } = useFetch("complexOptions")
   const [sides, setSides] = useState([])
   // DERIVED STATE
-  const [id, setId] = useState(0); 
+  const [id, setId] = useState(fetchObject("id")); 
  console.log("id: ",  id)
   //----------------------------------------------------------------------------//
   function showActiveItem(i){
@@ -49,7 +62,9 @@ function App() {
   useEffect(()=>{
     localStorage.setItem("activeItem", JSON.stringify(activeItem));
     localStorage.setItem("cart", JSON.stringify(cart));
-  }, [activeItem, cart]);
+    localStorage.setItem("id", JSON.stringify(id)); 
+    localStorage.setItem("orderTotal", JSON.stringify(orderTotal));
+  }, [activeItem, cart, id, orderTotal]);
 
   function addToCart(i, sides, choiceList, qty){
     setId(id => id + 1)
@@ -101,23 +116,31 @@ function App() {
     })
     navigate('/cart')
   }
-  function emptyCart(){
-    setOrderTotal(0)
-    setCart([]);
-  }
+  
   function deleteFromCart(id){
+    if(cart.length === 1){
+      setOrderTotal(0);
+      setId(0);
+      setCart([])
+      return; 
+    }
     let itemToDelete;
+    let price; 
     for (let i = 0; i < cart.length; i++) {
       if(parseInt(id)===cart[i].id){
         itemToDelete = i; 
+        price = parseInt(cart[i].price);
       } 
     }
     cart.splice(itemToDelete, 1); 
+    console.log("deleted item", itemToDelete)
     setCart((items)=>{
-      
       return [...items]; 
     })
-  
+    setOrderTotal(total => {
+      return total - price; 
+    })
+   
   }
 
   function addToSides(val) {
@@ -125,6 +148,7 @@ function App() {
       return [...side, val]
     })
   }
+
   function deleteFromSides(val) {
     let newArr = [];
     for (let i = 0; i < sides.length; i++) {
@@ -136,9 +160,11 @@ function App() {
     setSides(newArr)
   }
 
-   
-
-
+  function emptyCart() {
+    setOrderTotal(0); 
+    setCart([]);
+    setId(0); 
+  }
 
   return (
     <div>
@@ -146,7 +172,7 @@ function App() {
       <Link to="/about">About</Link>
       <Link to="/gallery">Gallery</Link>
       <Link to="/menu">Menu</Link>
-      <Link to="/cart">Cart<span>{parseInt(cart.length)}</span></Link>
+      <Link to="/cart">Cart<span>{cart.length}</span></Link>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

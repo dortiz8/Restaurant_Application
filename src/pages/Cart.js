@@ -16,52 +16,61 @@ function Cart({ cart, emptyCart, deleteFromCart, duplicateCartItem, orderTotal }
         return (
 
             <li key={id} className="cartItem">
-                <div>
+                <div className="itemDetails">
                     <h4>{singleItem[0].name}</h4>
-                    {qty > 0 && (<p>Qty: {qty}</p>)}
+                    
                     <span>${price}</span>
                 </div>
                 <img src={`public/images/${singleItem[0].image}`}></img>
-                {choices !== undefined && (
-                    <div>
-                        <p>Choices</p>
-                        <ul>
-                            {
-                                choices.map(c => (
-                                    <li>
-                                        <p>{c.id + 1}</p>
-                                        <span>{c.meat}</span><br></br>
-                                        <span>{c.wrap}</span>
-                                    </li>
-                                )
-                                )
-                            }
-                        </ul>
-                    </div>
-                )
-                }
-                {sides !== undefined && (
-                    <div>
-                        <p>Sides</p>
-                        <ul>
-                            {
-                                sides.map(s => (
-                                    <li>
-                                        {s}
-                                    </li>
-                                )
-                                )
-                            }
-                        </ul>
-                    </div>
-                )
-                }
-                <div>
+                {qty > 0 && (<p className="itemQty">Qty: {qty}</p>)}
+                <div className="itemExtras">
+                    
+                    {choices !== undefined && (
+                        <div className="choices">
+                            <p className="extrasTitle">Choices</p>
+                            <ul>
+                                {
+                                    choices.map(c => (
+                                        <li>
+                                            <p>#{c.id + 1}</p>
+                                                <div>
+                                                    <span>{c.meat}</span><br></br>
+                                                    <span>{c.wrap}</span>
+                                                </div>
+                                        </li>
+                                    )
+                                    )
+                                }
+                            </ul>
+                        </div>
+                    )
+                    }
+                    {sides !== undefined && (
+                        <div className="sides">
+                            <p className="extrasTitle">Sides</p>
+                            <ul >
+                                {
+                                    sides.map(s => (
+                                        <li>
+                                            {s}
+                                        </li>
+                                    )
+                                    )
+                                }
+                            </ul>
+                        </div>
+                    )
+                    }
+                </div>
+                
+                <div className="actionButtons">
                     <button
                     id={id}
                     onClick={(e)=>deleteFromCart(e.target.id)}
-                    >Delete</button>
+                    className="minus"
+                    >-</button>
                     <button
+                    className="plus"
                     onClick={()=>duplicateCartItem(i)}
                     >+</button>
                 </div>
@@ -88,7 +97,7 @@ function Cart({ cart, emptyCart, deleteFromCart, duplicateCartItem, orderTotal }
                     <button onClick={() => emptyCart()}>Clear Cart</button>
                 </div>
             }
-            <ul>
+            <ul className="cart">
                 {cart.map(renderItem)}
             </ul>
 

@@ -1,20 +1,17 @@
 $bodyColor: rgb(255, 255, 255);
-
+$light-text: rgb(105, 105, 105); 
+$plus-color: rgb(45, 145, 45); 
+$minus-color: rgb(201, 41, 41); 
+$highlight: red; 
 
 body{
     background-color: $bodyColor;
 }
 
-.cart{
-    border: none;
-    box-shadow: 1px 1px 1px rgb(168, 168, 168);
-    background-color: whitesmoke;
-    margin: 2rem;
-}
 
 .extras{
     border: none;
-    box-shadow: 1px 1px 1px rgb(168, 168, 168);
+  
     background-color: rgb(253, 110, 110);
 }
 
@@ -41,16 +38,97 @@ body{
 }
 
 //Cart
+.cart{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
 .cartItem{
-    width: 50%;
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 1rem;
     display: flex;
     flex-direction: column;
-    background-color: rgb(235, 184, 184);
-    margin-bottom: 1rem;
+    background-color: rgb(230, 228, 228);
+    box-shadow: .5px .5px 2px;
+    .itemDetails{
+        margin: 0 0 1rem 1rem; 
+        h4{
+            font-size: 1.2rem;
+            color: red;
+        }
+        span{
+            color: $light-text;
+        }
+    }
     img{
-        width: 10rem;
+        width: 90%;
+        margin-left: 5%;
     }
-    button{
-        width: 5rem;
+    .itemQty{
+        color: $light-text;
+        margin-left: 1rem;
     }
+    .itemExtras{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        .extrasTitle{
+            color: $highlight; 
+        }
+        .sides{
+            display: flex;
+            flex-direction: column;
+            margin: 0 0 1rem 1rem; 
+           
+            ul{
+                li{
+                    list-style: none;
+                     color: $light-text;
+                }
+            }
+        }
+      .choices{
+           margin: 0 0 1rem 1rem; 
+          ul{
+              padding: 0; 
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+              li{
+                  list-style: none;
+                  display: flex;
+                  p{
+                      color: $highlight;
+                      margin-right: .5rem;
+                  }
+                  div{
+                      
+                    span{
+                      color: $light-text;
+                  }
+                  }
+                  
+              }
+          }
+      }
+    }
+    
+    .actionButtons{
+        display: flex;
+        justify-content: center;
+        button{
+            width: 6rem;
+            height: 2rem;
+            margin: .5rem 1rem;
+            border: none;
+            color: whitesmoke;
+            font-size: large;
+        }
+       .plus{
+            background-color: $plus-color;
+        }
+       .minus{
+           background-color: $minus-color;
+       }
+        
+    }
+     
 }
